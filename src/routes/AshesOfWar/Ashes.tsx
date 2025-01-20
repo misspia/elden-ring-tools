@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useListAshes } from "@/hooks/data";
 
 export const Ashes: React.FC = () => {
   const { data, isLoading } = useListAshes();
-
-  useEffect(() => {
-    console.debug(data);
-  }, [data]);
 
   if (isLoading) {
     return <div>loading</div>;
@@ -17,8 +13,8 @@ export const Ashes: React.FC = () => {
   }
   return (
     <div className="flex-col">
-      {data.map((ash) => (
-        <div>{ash.name}</div>
+      {data.map((ash, index) => (
+        <div key={index}>{ash.name}</div>
       ))}
     </div>
   );

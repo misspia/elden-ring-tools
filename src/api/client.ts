@@ -1,4 +1,4 @@
-import { Ash, ListAshes, ListAshesResponse } from "@/api/types";
+import { ListAshesResponse } from "@/types/api";
 
 export class EldenRingClient {
   private readonly hostname: string;

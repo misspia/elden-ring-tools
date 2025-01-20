@@ -7,3 +7,4 @@ Collection of web tools for ye Tarnished
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/)
+- [TanStack](https://tanstack.com/)

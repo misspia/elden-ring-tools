@@ -1,8 +1,10 @@
+import { RouterPath } from "@/types/routes";
+import { Link } from "@tanstack/react-router";
 import React, { useState } from "react";
 
 type NavItem = {
   label: string;
-  href: string;
+  to: RouterPath;
 };
 
 type NavGroup = {
@@ -16,7 +18,11 @@ const navGroups: NavGroup[] = [
     items: [
       {
         label: "Ashes of War",
-        href: "",
+        to: "/ashes",
+      },
+      {
+        label: "Armor",
+        to: "/armor",
       },
     ],
   },
@@ -25,11 +31,11 @@ const navGroups: NavGroup[] = [
     items: [
       {
         label: "Calculator",
-        href: "",
+        to: "/calculator",
       },
       {
         label: "Builder",
-        href: "",
+        to: "/builder",
       },
     ],
   },
@@ -44,6 +50,7 @@ export const NavigationBar: React.FC = () => {
 
   return (
     <div className="flex-col w-full bg-er-orange">
+      <Link to="/">home</Link>
       {navGroups.map((group, index) => (
         <NavGroup
           key={index}
@@ -72,7 +79,7 @@ const NavGroup: React.FC<NavGroupProps> = ({
       {active &&
         items.map((item) => (
           <div key={item.label}>
-            <a href={item.href}>{item.label}</a>
+            <Link to={item.to}>{item.label}</Link>
           </div>
         ))}
     </div>

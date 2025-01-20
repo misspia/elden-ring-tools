@@ -1,6 +1,10 @@
 import React from "react";
-import { Ashes } from "@/pages/AshesOfWar/Ashes";
+import { Ashes } from "@/routes/AshesOfWar/Ashes";
 import { Page } from "@/components/Page";
+
+export const AshesOfWarErrorPage: React.FC = () => {
+  return <div>ashes of war not available</div>;
+};
 
 export const AshesOfWarPage: React.FC = () => {
   return (

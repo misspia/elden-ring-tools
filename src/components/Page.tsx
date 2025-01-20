@@ -1,6 +1,5 @@
 import React from "react";
 import c from "classnames";
-import { NavigationBar } from "@/components/NavigationBar";
 
 type Props = {
   children: React.ReactNode;
@@ -8,10 +7,5 @@ type Props = {
 };
 
 export const Page: React.FC<Props> = ({ children, className }) => {
-  return (
-    <div className="flex flex-start h-full">
-      <NavigationBar />
-      <div className={c("ml-2", className)}>{children}</div>
-    </div>
-  );
+  return <div className={c("flex flex-col", className)}>{children}</div>;
 };

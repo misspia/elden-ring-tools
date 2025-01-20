@@ -1,3 +1,9 @@
+import { QueryClient } from "@tanstack/react-query";
+
+export type AppContext = {
+  queryClient: QueryClient;
+};
+
 export type ERError = {
   success: false;
 };
