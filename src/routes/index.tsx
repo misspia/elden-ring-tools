@@ -13,9 +13,10 @@ import { HomePage } from "@/routes/Home";
 import { AshesOfWarPage } from "@/routes/AshesOfWar";
 import { NotFoundPage } from "@/routes/NotFound";
 import { Root } from "@/routes/Root";
-import { ArmorPage } from "./Armor";
-import { CalculatorPage } from "./Calculator";
-import { BuilderPage } from "./Builder";
+import { ArmorPage } from "@/routes/Armor";
+import { CalculatorPage } from "@/routes/Calculator";
+import { BuilderPage } from "@/routes/Builder";
+import { WeaponsPage } from "@/routes/Weapons";
 
 /**
  * Routes
@@ -42,6 +43,12 @@ const armorRoute = createRoute({
   component: ArmorPage,
 });
 
+const weaponsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "weapons",
+  component: WeaponsPage,
+});
+
 const calculatorRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "calculator",
@@ -58,6 +65,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   ashesOfWarRoute,
   armorRoute,
+  weaponsRoute,
   calculatorRoute,
   builderRoute,
 ]);

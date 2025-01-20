@@ -24,6 +24,10 @@ const navGroups: NavGroup[] = [
         label: "Armor",
         to: "/armor",
       },
+      {
+        label: "Weapons",
+        to: "/weapons",
+      },
     ],
   },
   {
