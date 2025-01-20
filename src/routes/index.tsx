@@ -1,6 +1,7 @@
 import React from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import {
+  createHashHistory,
   createRootRouteWithContext,
   createRoute,
   createRouter,
@@ -64,11 +65,13 @@ const routeTree = rootRoute.addChildren([
 /**
  * Router
  */
+const hashHistory = createHashHistory();
 const queryClient = new QueryClient();
 
 export const router = createRouter({
   routeTree,
   defaultNotFoundComponent: NotFoundPage,
+  history: hashHistory,
   context: { queryClient },
 });
 
