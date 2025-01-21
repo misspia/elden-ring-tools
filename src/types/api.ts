@@ -27,3 +27,7 @@ export type ListAshes = Ash[];
 export type ListAshesResponse = ERResponse & {
   data: ListAshes;
 };
+
+export type GetAshByIdResponse = ERResponse & {
+  data: Ash;
+};

@@ -1,4 +1,4 @@
-import { ListAshesResponse } from "@/types/api";
+import { GetAshByIdResponse, ListAshesResponse } from "@/types/api";
 
 export class EldenRingClient {
   private readonly hostname: string;
@@ -18,5 +18,9 @@ export class EldenRingClient {
 
   public listAshes() {
     return this.fetch<ListAshesResponse>("ashes");
+  }
+
+  public getAshById({ ashId }: { ashId: string }) {
+    return this.fetch<GetAshByIdResponse>(`ashes/${ashId}`);
   }
 }

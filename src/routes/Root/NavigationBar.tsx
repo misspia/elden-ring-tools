@@ -53,7 +53,7 @@ export const NavigationBar: React.FC = () => {
   };
 
   return (
-    <div className="flex-col w-full bg-er-orange">
+    <div className="flex-col w-36 p-2.5 bg-er-orange">
       <Link to="/">home</Link>
       {navGroups.map((group, index) => (
         <NavGroup

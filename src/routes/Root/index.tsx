@@ -4,9 +4,9 @@ import { NavigationBar } from "@/routes/Root/NavigationBar";
 
 export const Root: React.FC = () => {
   return (
-    <div className="flex flex-start h-full">
+    <div className="flex flex-start h-full w-full">
       <NavigationBar />
-      <div className="ml-2">
+      <div className="grow ml-2">
         <Outlet />
       </div>
     </div>

@@ -11,6 +11,8 @@ export default {
         "er-blue-300": "#3db9b2", // Green Grapple
         "er-blue-600": "#1f648d", // Traditional Blue
         "er-blue-800": "#003a6c", // Ateneo Blue
+
+        "raisin-black": "#252531",
       },
     },
   },
