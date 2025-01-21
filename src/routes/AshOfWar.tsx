@@ -1,6 +1,7 @@
 import React from "react";
 import { useMatch } from "@tanstack/react-router";
 import { useAsh } from "@/hooks/data";
+import { Loading } from "@/components/Loading";
 
 export const AshOfWarErrorPage: React.FC = () => {
   return <div>ashes of war not available</div>;
@@ -11,7 +12,7 @@ export const AshOfWarPage: React.FC = () => {
   const { data, isLoading } = useAsh({ ashId: match.params.ashId });
 
   if (isLoading) {
-    return <div>loading</div>;
+    return <Loading />;
   }
   if (!data) {
     return <AshOfWarErrorPage />;

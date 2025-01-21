@@ -1,4 +1,9 @@
-import { GetAshByIdResponse, ListAshesResponse } from "@/types/api";
+import {
+  GetAshByIdResponse,
+  GetWeaponByIdResponse,
+  ListAshesResponse,
+  ListWeaponsResponse,
+} from "@/types/api";
 
 export class EldenRingClient {
   private readonly hostname: string;
@@ -22,5 +27,14 @@ export class EldenRingClient {
 
   public getAshById({ ashId }: { ashId: string }) {
     return this.fetch<GetAshByIdResponse>(`ashes/${ashId}`);
+  }
+
+  public listWeapons() {
+    const params = "?limit=307"; // total num weapons
+    return this.fetch<ListWeaponsResponse>(`weapons${params}`);
+  }
+
+  public getWeaponById({ weaponId }: { weaponId: string }) {
+    return this.fetch<GetWeaponByIdResponse>(`weapons/${weaponId}`);
   }
 }

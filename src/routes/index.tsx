@@ -88,7 +88,7 @@ const weaponsIndexRoute = createRoute({
 
 const weaponRoute = createRoute({
   getParentRoute: () => weaponsRoute,
-  path: "$weapon",
+  path: "$weaponId",
   component: WeaponPage,
   errorComponent: WeaponErrorPage,
 });
@@ -99,7 +99,7 @@ const enemiesRoute = createRoute({
 });
 
 const enemiesIndexRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => enemiesRoute,
   path: "/",
   component: EnemiesPage,
   errorComponent: EnemiesErrorPage,

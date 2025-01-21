@@ -31,3 +31,59 @@ export type ListAshesResponse = ERResponse & {
 export type GetAshByIdResponse = ERResponse & {
   data: Ash;
 };
+
+export type StatName =
+  | "Phy" // Physical
+  | "Mag" // Magic
+  | "Fire" // Fire
+  | "Ligt" // Lightning
+  | "Holy" // Holy
+  | "Crit"; // Critical
+
+export type Stat = {
+  name: string;
+  amount: number;
+};
+
+export type AttributeName =
+  | "Str" // Strength
+  | "Dex" // Dexterity
+  | "Arc" // Arcane
+  | "Int" // Intelligence
+  | "Fai" // Faith
+  | "-"; // no scaling value in this case
+
+export type ScaleValue = "S" | "A" | "B" | "C" | "D" | "E" | "?";
+
+export type ScaleStat = {
+  name: AttributeName;
+  scaling: ScaleValue;
+};
+
+export type Attribute = {
+  name: AttributeName;
+  amount: number;
+};
+
+export type Weapon = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  category: string;
+  weight: number;
+  attack: Stat[];
+  defence: Stat[];
+  requiredAttributes: Attribute[];
+  scalesWith: ScaleStat[];
+};
+
+export type ListWeapons = Weapon[];
+
+export type ListWeaponsResponse = ERResponse & {
+  data: ListWeapons;
+};
+
+export type GetWeaponByIdResponse = ERResponse & {
+  data: Weapon;
+};

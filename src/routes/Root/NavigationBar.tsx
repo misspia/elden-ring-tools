@@ -14,7 +14,7 @@ type NavGroup = {
 
 const navGroups: NavGroup[] = [
   {
-    label: "Equipment",
+    label: "Compare",
     items: [
       {
         label: "Ashes of War",
@@ -22,11 +22,15 @@ const navGroups: NavGroup[] = [
       },
       {
         label: "Armor",
-        to: "/armor",
+        to: "/armors",
       },
       {
         label: "Weapons",
         to: "/weapons",
+      },
+      {
+        label: "Enemies",
+        to: "/enemies",
       },
     ],
   },
@@ -38,8 +42,8 @@ const navGroups: NavGroup[] = [
         to: "/calculator",
       },
       {
-        label: "Builder",
-        to: "/builder",
+        label: "Build",
+        to: "/build",
       },
     ],
   },
@@ -54,7 +58,7 @@ export const NavigationBar: React.FC = () => {
 
   return (
     <div className="flex-col w-36 p-2.5 bg-er-orange">
-      <Link to="/">home</Link>
+      <Link to="/">Home</Link>
       {navGroups.map((group, index) => (
         <NavGroup
           key={index}
@@ -77,12 +81,12 @@ const NavGroup: React.FC<NavGroupProps> = ({
 }) => {
   return (
     <div className="">
-      <div className="cursor-pointer" onClick={onClick}>
+      <div className="p-1 cursor-pointer" onClick={onClick}>
         {label}
       </div>
       {active &&
         items.map((item) => (
-          <div key={item.label}>
+          <div key={item.label} className="ml-3">
             <Link to={item.to}>{item.label}</Link>
           </div>
         ))}

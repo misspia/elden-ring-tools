@@ -3,6 +3,7 @@ import { Page } from "@/components/Page";
 import { useListAshes } from "@/hooks/data";
 import { ItemPreview } from "@/components/ItemPreview";
 import { Link } from "@tanstack/react-router";
+import { Loading } from "@/components/Loading";
 
 export const AshesOfWarErrorPage: React.FC = () => {
   return <div>ashes of war not available</div>;
@@ -12,7 +13,7 @@ export const AshesOfWarPage: React.FC = () => {
   const { data, isLoading } = useListAshes();
 
   if (isLoading) {
-    return <div>loading</div>;
+    return <Loading />;
   }
 
   if (!data) {
