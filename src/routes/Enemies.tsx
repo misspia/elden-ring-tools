@@ -1,13 +1,14 @@
+import { Page } from "@/components/Page";
 import React from "react";
 
 export const EnemiesErrorPage: React.FC = () => {
-  return <div>enemies unavailable</div>;
+  return <Page>enemies unavailable</Page>;
 };
 
 export const EnemiesPage: React.FC = () => {
   return (
-    <div>
+    <Page>
       <h1>enemies page</h1>
-    </div>
+    </Page>
   );
 };

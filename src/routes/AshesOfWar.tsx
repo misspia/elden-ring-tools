@@ -6,7 +6,7 @@ import { Link } from "@tanstack/react-router";
 import { Loading } from "@/components/Loading";
 
 export const AshesOfWarErrorPage: React.FC = () => {
-  return <div>ashes of war not available</div>;
+  return <Page>ashes of war not available</Page>;
 };
 
 export const AshesOfWarPage: React.FC = () => {

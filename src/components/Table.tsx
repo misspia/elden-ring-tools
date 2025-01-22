@@ -1,54 +1,108 @@
 import React from "react";
+import c from "classnames";
+import {
+  TableData,
+  TableDataProps,
+  TableHead,
+  TableHeadProps,
+} from "@/components/TableCell";
+import { PickRename } from "@/utils/types";
 
-/**
- * Table header grid will display either a string label
- * or an image.
- */
-type TableHeaderItemDisplay =
-  | {
-      type: "label";
-      label: string;
-    }
-  | {
-      type: "image";
-      src: string;
-      alt: string;
-    };
-type TableHeaderItem = {
-  key: string | number;
-  display: TableHeaderItemDisplay;
-  onSort?: VoidFunction;
+export type CellAlign = "center" | "left" | "right";
+
+type TableHead = Omit<
+  PickRename<TableHeadProps, "children", "display">,
+  "scope"
+> & {
+  key: React.Key;
+  type: "head";
 };
 
-type TableHeader = TableHeaderItem[];
-
-type Props = {
-  caption?: string;
-  header: TableHeader;
+type TableData = PickRename<TableDataProps, "children", "display"> & {
+  key: React.Key;
+  type: "data";
 };
 
-export const Table: React.FC<Props> = ({ caption, header }) => {
+type TableBodyRow = {
+  key: string;
+  items: (TableHead | TableData)[];
+};
+
+export type TableHeader = TableHead[];
+
+export type TableBody = TableBodyRow[];
+
+export type TableCaption = {
+  text: string;
+  side: "top" | "bottom";
+  type: "default" | "title";
+};
+
+export type TableProps = {
+  body: TableBody;
+  /**
+   * Horizontal text alignment for cells
+   */
+  align?: CellAlign;
+  caption?: TableCaption;
+  header?: TableHeader;
+  className?: string;
+};
+
+export const Table: React.FC<TableProps> = ({
+  body,
+  align = "left",
+  caption,
+  header,
+  className,
+}) => {
   return (
-    <table>
-      {caption && <caption>{caption}</caption>}
-      <thead>
-        <tr>
-          {header.map((item) => (
-            <th key={item.key}>
-              {item.display.type === "label" ? (
-                <div>{item.display.label}</div>
-              ) : (
-                <img src={item.display.src} alt={item.display.alt} />
-              )}
-            </th>
-          ))}
-        </tr>
-      </thead>
+    <table
+      className={c(
+        "w-full align-middle",
+        {
+          "text-center": align === "center",
+          "text-left": align === "left",
+          "text-right": align === "right",
+        },
+        className
+      )}
+    >
+      {caption && (
+        <caption
+          className={c({
+            "caption-top": caption.side === "top",
+            "caption-bottom": caption.side === "bottom",
+          })}
+        >
+          {caption.text}
+        </caption>
+      )}
+      {header && (
+        <thead>
+          <tr>
+            {header.map((item) => (
+              <TableHead key={item.key} scope="col" onSort={item.onSort}>
+                {item.display}
+              </TableHead>
+            ))}
+          </tr>
+        </thead>
+      )}
       <tbody>
-        <tr>
-          <th></th>
-          <td></td>
-        </tr>
+        {body.map((row) => (
+          <tr key={row.key}>
+            {row.items.map((item) =>
+              item.type === "head" ? (
+                <TableHead key={item.key} scope="row" onSort={item.onSort}>
+                  {item.display}
+                </TableHead>
+              ) : (
+                <TableData key={item.key}>{item.display}</TableData>
+              )
+            )}
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -1,13 +1,14 @@
 import React from "react";
+import { Page } from "@/components/Page";
 
 export const ArmorsErrorPage: React.FC = () => {
-  return <div>Armors unavailable</div>;
+  return <Page>Armors unavailable</Page>;
 };
 
 export const ArmorsPage: React.FC = () => {
   return (
-    <div>
+    <Page>
       <h1>Armors page</h1>
-    </div>
+    </Page>
   );
 };

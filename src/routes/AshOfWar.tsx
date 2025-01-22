@@ -2,9 +2,10 @@ import React from "react";
 import { useMatch } from "@tanstack/react-router";
 import { useAsh } from "@/hooks/data";
 import { Loading } from "@/components/Loading";
+import { Page } from "@/components/Page";
 
 export const AshOfWarErrorPage: React.FC = () => {
-  return <div>ashes of war not available</div>;
+  return <Page>ashes of war not available</Page>;
 };
 
 export const AshOfWarPage: React.FC = () => {
@@ -19,9 +20,9 @@ export const AshOfWarPage: React.FC = () => {
   }
 
   return (
-    <div className="flex">
+    <Page className="flex">
       <h1>{data.name}</h1>
       <div>id: {match.params.ashId}</div>
-    </div>
+    </Page>
   );
 };

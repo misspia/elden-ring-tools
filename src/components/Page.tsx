@@ -8,7 +8,7 @@ type Props = {
 
 export const Page: React.FC<Props> = ({ children, className }) => {
   return (
-    <div className={c("w-full h-full flex flex-col", className)}>
+    <div className={c("w-full h-full flex flex-col box-border p-2", className)}>
       {children}
     </div>
   );

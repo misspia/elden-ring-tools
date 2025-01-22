@@ -38,12 +38,25 @@ export type StatName =
   | "Fire" // Fire
   | "Ligt" // Lightning
   | "Holy" // Holy
-  | "Crit"; // Critical
 
-export type Stat = {
-  name: string;
+export type AttackStatName 
+= StatName 
+| 'Crit' // Critical
+
+export type DefenceStatName 
+= StatName 
+| 'Boost' 
+
+export type AttackStat = {
+  name: AttackStatName;
   amount: number;
 };
+
+export type DefenceStat = {
+  name: DefenceStatName;
+  amount: number;
+};
+
 
 export type AttributeName =
   | "Str" // Strength
@@ -72,8 +85,8 @@ export type Weapon = {
   description: string;
   category: string;
   weight: number;
-  attack: Stat[];
-  defence: Stat[];
+  attack: AttackStat[];
+  defence: DefenceStat[];
   requiredAttributes: Attribute[];
   scalesWith: ScaleStat[];
 };

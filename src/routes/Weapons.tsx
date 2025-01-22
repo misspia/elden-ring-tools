@@ -1,11 +1,12 @@
+import React from "react";
 import { ItemPreview } from "@/components/ItemPreview";
 import { Loading } from "@/components/Loading";
+import { Page } from "@/components/Page";
 import { useListWeapons } from "@/hooks/data";
 import { Link } from "@tanstack/react-router";
-import React from "react";
 
 export const WeaponsErrorPage: React.FC = () => {
-  return <div>Weapons unavailable</div>;
+  return <Page>Weapons unavailable</Page>;
 };
 
 export const WeaponsPage: React.FC = () => {
@@ -20,7 +21,7 @@ export const WeaponsPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <Page>
       <h1>Weapons page</h1>
       <div className="flex flex-wrap gap-2">
         {data.map((weapon) => (
@@ -33,6 +34,6 @@ export const WeaponsPage: React.FC = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </Page>
   );
 };
