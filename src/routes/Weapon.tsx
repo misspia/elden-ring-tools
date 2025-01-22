@@ -31,7 +31,6 @@ export const WeaponPage: React.FC = () => {
     caption: {
       text: "Required attributes",
       side: "top",
-      type: "default",
     },
     body: data.requiredAttributes.map((attribute) => ({
       key: attribute.name,
@@ -54,7 +53,6 @@ export const WeaponPage: React.FC = () => {
     caption: {
       text: "Scaling",
       side: "top",
-      type: "default",
     },
     body: data.scalesWith.map((attribute) => ({
       key: attribute.name,
@@ -77,7 +75,6 @@ export const WeaponPage: React.FC = () => {
     caption: {
       text: "Attack",
       side: "top",
-      type: "default",
     },
     body: data.attack.map((stat) => ({
       key: stat.name,
@@ -100,7 +97,6 @@ export const WeaponPage: React.FC = () => {
     caption: {
       text: "Defence",
       side: "top",
-      type: "default",
     },
     body: data.defence.map((stat) => ({
       key: stat.name,

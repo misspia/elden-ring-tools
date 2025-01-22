@@ -35,7 +35,6 @@ export type TableBody = TableBodyRow[];
 export type TableCaption = {
   text: React.ReactNode;
   side: "top" | "bottom";
-  type: "default" | "title";
 };
 
 export type TableProps = {
