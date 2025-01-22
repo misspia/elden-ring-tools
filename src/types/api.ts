@@ -37,15 +37,11 @@ export type StatName =
   | "Mag" // Magic
   | "Fire" // Fire
   | "Ligt" // Lightning
-  | "Holy" // Holy
+  | "Holy"; // Holy
 
-export type AttackStatName 
-= StatName 
-| 'Crit' // Critical
+export type AttackStatName = StatName | "Crit"; // Critical
 
-export type DefenceStatName 
-= StatName 
-| 'Boost' 
+export type DefenceStatName = StatName | "Boost";
 
 export type AttackStat = {
   name: AttackStatName;
@@ -56,7 +52,6 @@ export type DefenceStat = {
   name: DefenceStatName;
   amount: number;
 };
-
 
 export type AttributeName =
   | "Str" // Strength

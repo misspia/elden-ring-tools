@@ -33,7 +33,7 @@ export type TableHeader = TableHead[];
 export type TableBody = TableBodyRow[];
 
 export type TableCaption = {
-  text: string;
+  text: React.ReactNode;
   side: "top" | "bottom";
   type: "default" | "title";
 };
@@ -65,7 +65,7 @@ export const Table: React.FC<TableProps> = ({
           "text-left": align === "left",
           "text-right": align === "right",
         },
-        className
+        className,
       )}
     >
       {caption && (
@@ -99,7 +99,7 @@ export const Table: React.FC<TableProps> = ({
                 </TableHead>
               ) : (
                 <TableData key={item.key}>{item.display}</TableData>
-              )
+              ),
             )}
           </tr>
         ))}
