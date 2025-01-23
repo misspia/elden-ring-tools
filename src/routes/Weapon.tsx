@@ -10,6 +10,8 @@ import {
   getDefenceStatDisplayName,
 } from "@/utils/stats";
 import { Page } from "@/components/Page";
+import { Text } from "@/components/Text";
+import c from "classnames";
 
 export const WeaponErrorPage: React.FC = () => {
   return <Page>Weapon unavailable</Page>;
@@ -29,7 +31,11 @@ export const WeaponPage: React.FC = () => {
 
   const requiredAttributeTable: TableProps = {
     caption: {
-      text: "Required attributes",
+      text: (
+        <Text as="h5" styleAs="h5">
+          Required attributes
+        </Text>
+      ),
       side: "top",
     },
     body: data.requiredAttributes.map((attribute) => ({
@@ -51,7 +57,11 @@ export const WeaponPage: React.FC = () => {
 
   const scalingTable: TableProps = {
     caption: {
-      text: "Scaling",
+      text: (
+        <Text as="h5" styleAs="h5">
+          Scaling
+        </Text>
+      ),
       side: "top",
     },
     body: data.scalesWith.map((attribute) => ({
@@ -73,7 +83,11 @@ export const WeaponPage: React.FC = () => {
 
   const attackStatsTable: TableProps = {
     caption: {
-      text: "Attack",
+      text: (
+        <Text as="h5" styleAs="h5">
+          Attack
+        </Text>
+      ),
       side: "top",
     },
     body: data.attack.map((stat) => ({
@@ -95,7 +109,11 @@ export const WeaponPage: React.FC = () => {
 
   const defenceStatsTable: TableProps = {
     caption: {
-      text: "Defence",
+      text: (
+        <Text as="h5" styleAs="h5">
+          Defence
+        </Text>
+      ),
       side: "top",
     },
     body: data.defence.map((stat) => ({
@@ -152,11 +170,22 @@ export const WeaponPage: React.FC = () => {
 
   return (
     <Page className="flex flex-col gap-2 items-center">
-      <h1>{data.name}</h1>
+      <Text as="h1" styleAs="h1">
+        {data.name}
+      </Text>
       <ItemPreview label={data.name} src={data.image} />
-      <div className="text-center">{data.description}</div>
+      <Text className="text-center">{data.description}</Text>
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2">
-        <Table className="md:w-36" {...attackStatsTable} />
+        <div
+          className={c(
+            "p-3 ",
+            // "border border-0.5 border-er-green-300",
+            // "shadow-er-green-300 shadow-md inset-shadow-er-green-300 inset-shadow-sm"
+            "border-y border-er-green-300",
+          )}
+        >
+          <Table className="md:w-36" {...attackStatsTable} />
+        </div>
         <Table className="md:w-36" {...defenceStatsTable} />
         <Table className="md:w-36" {...requiredAttributeTable} />
         <Table className="md:w-36" {...scalingTable} />
