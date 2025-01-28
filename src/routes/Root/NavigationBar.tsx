@@ -87,6 +87,9 @@ const NavGroup: React.FC<NavGroupProps> = ({
       {active &&
         items.map((item) => (
           <div key={item.label} className="ml-3">
+            {/* TODO: get type to work */}
+            {/* 
+            // @ts-ignore */}
             <Link to={item.to}>{item.label}</Link>
           </div>
         ))}
