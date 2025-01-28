@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef } from "react";
 
 import c from "classnames";
 
-type AsElement =
+export type AsElement =
   | "h1"
   | "h2"
   | "h3"

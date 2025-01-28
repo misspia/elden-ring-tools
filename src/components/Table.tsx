@@ -7,6 +7,7 @@ import {
   TableHeadProps,
 } from "@/components/TableCell";
 import { PickRename } from "@/utils/types";
+import { ColorTheme } from "@/types/styles";
 
 export type CellAlign = "center" | "left" | "right";
 
@@ -39,6 +40,7 @@ export type TableCaption = {
 
 export type TableProps = {
   body: TableBody;
+  theme: ColorTheme;
   /**
    * Horizontal text alignment for cells
    */
@@ -50,6 +52,7 @@ export type TableProps = {
 
 export const Table: React.FC<TableProps> = ({
   body,
+  theme = "gold",
   align = "left",
   caption,
   header,
@@ -63,6 +66,8 @@ export const Table: React.FC<TableProps> = ({
           "text-center": align === "center",
           "text-left": align === "left",
           "text-right": align === "right",
+          "text-er-gold-500": theme === "gold",
+          "text-er-green-500": theme === "green",
         },
         className,
       )}

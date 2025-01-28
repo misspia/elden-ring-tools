@@ -23,7 +23,7 @@ export const ItemPreview: React.FC<Props> = ({
       className={c(
         "flex justify-center items-center",
         "w-44 h-44 rounded-lg",
-        "bg-raisin-black",
+        "bg-er-black",
         "cursor-pointer",
         "transition-all duration-300",
         "hover:bg-white ",
