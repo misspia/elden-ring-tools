@@ -14,7 +14,6 @@ import { Text } from "@/components/Text";
 import { ProfileImage } from "@/components/ProfileImage";
 import { BarGraph, BarGraphProps } from "@/components/BarGraph";
 import { Diamond } from "@/components/Diamond";
-import { Box } from "@/components/Box";
 import { PageTitle } from "@/components/PageTitle";
 
 export const WeaponErrorPage: React.FC = () => {
@@ -30,7 +29,6 @@ export const WeaponPage: React.FC = () => {
   }
 
   if (!data) {
-    console.debug("!data", data);
     return <WeaponErrorPage />;
   }
 
@@ -89,9 +87,35 @@ export const WeaponPage: React.FC = () => {
     })),
   };
 
+  const weightTable: TableProps = {
+    theme: "gold",
+    body: [
+      {
+        key: "weight",
+        items: [
+          {
+            key: "weight",
+            type: "head",
+            display: "weight",
+          },
+          {
+            key: "weight-value",
+            type: "data",
+            display: data.weight,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <Page className="flex flex-col gap-2 items-center">
-      <PageTitle text={data.name} as="h1" theme="gold" className="my-10" />
+      <PageTitle
+        title={data.name}
+        subtitle={data.category}
+        theme="gold"
+        className="my-10"
+      />
       <div className="w-full flex flex-col md:flex-row justify-center gap-4">
         <div className="grow flex flex-col justify-center items-center gap-10">
           <ProfileImage src={data.image} alt={`Image of ${data.name}`} />
@@ -100,14 +124,14 @@ export const WeaponPage: React.FC = () => {
           </Text>
         </div>
         <div className="grow flex flex-col gap-6">
-          <div className="flex gap-2">
-            <Box theme="gold">{data.category}</Box>
-            <Box theme="gold">Weight: {data.weight}</Box>
-          </div>
+          <div className="flex gap-2"></div>
           <div className="grow grid gap-10 grid-cols-1 md:grid-cols-2">
             <BarGraph {...attackBarGraph} />
             <BarGraph {...defenceBarGraph} />
-            <Table {...requiredAttributeTable} />
+            <div className="flex flex-col gap-4">
+              <Table {...requiredAttributeTable} />
+              <Table {...weightTable} />
+            </div>
             <div className="flex flex-col items-center gap-1">
               <Text as="h5" className="text-er-gold-500">
                 Scaling

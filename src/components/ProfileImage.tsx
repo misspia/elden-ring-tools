@@ -40,15 +40,26 @@ export const ProfileImage: React.FC<Props> = ({
     >
       <div
         className={c(
-          // "w-[80%] h-[80%] absolute top-[50%] left-[50%] -translate-1/2 rotate-45 z-[-1]",
-          "w-full h-full absolute top-0 left-0 rotate-45 z-[-1]",
-          "border",
+          "w-[75%] h-[75%] md:w-[85%] md:h-[85%]",
+          "absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] rotate-45",
+          "border z-[-1]",
           {
-            "border-er-green-500": theme === "green",
-            "border-er-gold-300": theme === "gold",
+            "border-er-green-500/50": theme === "green",
+            "border-er-gold-300/50": theme === "gold",
           },
         )}
-      ></div>
+      />
+      <div
+        className={c(
+          "w-[100%] h-[100%] ",
+          "absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
+          "border rounded-full",
+          {
+            "border-er-green-500/50": theme === "green",
+            "border-er-gold-300/50": theme === "gold",
+          },
+        )}
+      />
       <img src={src} alt={alt} className="w-full h-auto" />
     </div>
   );

@@ -3,12 +3,17 @@ import c from "classnames";
 
 type Props = {
   children: React.ReactNode;
-  className?: string; // css classes for children wrapper
+  className?: string;
 };
 
 export const Page: React.FC<Props> = ({ children, className }) => {
   return (
-    <div className={c("w-full h-full flex flex-col box-border p-2", className)}>
+    <div
+      className={c(
+        "w-full h-full flex flex-col box-border pt-2 pb-10 md:pb-2 px-4 md:px-6",
+        className,
+      )}
+    >
       {children}
     </div>
   );

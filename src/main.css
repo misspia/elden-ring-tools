@@ -18,9 +18,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body,
+#root {
+  width: 100vw;
+}
 #root {
   /* max-width: 1280px; */
-  width: 100vw;
   min-height: 100vh;
 }
 

@@ -22,7 +22,7 @@ export const WeaponsPage: React.FC = () => {
 
   return (
     <Page>
-      <h1>Weapons page</h1>
+      <h1>Weapons</h1>
       <div className="flex flex-wrap gap-2">
         {data.map((weapon) => (
           <Link
