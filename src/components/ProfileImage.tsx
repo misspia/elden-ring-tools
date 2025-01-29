@@ -32,8 +32,8 @@ export const ProfileImage: React.FC<Props> = ({
           "border-er-green-500": theme === "green",
           "border-er-gold-300": theme === "gold",
           "md:w-36 md:h-36": size === "sm",
-          "md:w-48 md:h-48": size === "md",
-          "md:w-64 md:h-64": size === "lg",
+          "md:w-64 md:h-64": size === "md",
+          "md:w-80 md:h-80": size === "lg",
         },
         className,
       )}

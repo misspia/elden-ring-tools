@@ -9,9 +9,21 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      // boxShadow: {
-      //   ''
-      // },
+      height: {
+        navbar: "4rem",
+      },
+      padding: {
+        "navbar-height": "4rem", // padding to offset navbar height
+      },
+      zIndex: {
+        navbar: 90,
+        "navbar-menu-overlay": 100,
+      },
+      boxShadow: {
+        // navbar: "0px -2px 20px -2px rgba(197, 135, 54, 0.5)",
+        navbar: "0px 5px 20px -2px rgb(19, 53, 52, 0.5)",
+        "navbar-menu": "0px -5px 20px -2px rgb(19, 53, 52, 0.5)",
+      },
       colors: {
         /** https://colorswall.com/palette/327666 */
         "er-orange": "#ed8a09", // Elden Ring Orange
