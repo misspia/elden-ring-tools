@@ -14,7 +14,7 @@ import { Text } from "@/components/Text";
 import { ProfileImage } from "@/components/ProfileImage";
 import { BarGraph, BarGraphProps } from "@/components/BarGraph";
 import { Diamond } from "@/components/Diamond";
-import { PageTitle } from "@/components/PageTitle";
+import { ProfileTitle } from "@/components/ProfileTitle";
 
 export const WeaponErrorPage: React.FC = () => {
   return <Page>Weapon unavailable</Page>;
@@ -110,7 +110,7 @@ export const WeaponPage: React.FC = () => {
 
   return (
     <Page className="flex flex-col gap-2 items-center">
-      <PageTitle
+      <ProfileTitle
         title={data.name}
         subtitle={data.category}
         theme="gold"

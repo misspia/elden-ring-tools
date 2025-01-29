@@ -95,3 +95,51 @@ export type ListWeaponsResponse = ERResponse & {
 export type GetWeaponByIdResponse = ERResponse & {
   data: Weapon;
 };
+
+export type DamageNegationStatName =
+  | "Phy"
+  | "Strike"
+  | "Slash"
+  | "Pierce"
+  | "Magic"
+  | "Fire"
+  | "Ligt"
+  | "Holy";
+
+export type DamageNegation = {
+  name: DamageNegationStatName;
+  amount: number;
+};
+
+export type ResistanceStatName =
+  | "Immunity"
+  | "Robustness"
+  | "Focus"
+  | "Vitality"
+  | "Poise";
+
+export type Resistance = {
+  name: ResistanceStatName;
+  amount: number;
+};
+
+export type Armor = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  category: string;
+  weight: number;
+  dmgNegation: DamageNegation[];
+  resistance: Resistance[];
+};
+
+export type ListArmors = Armor[];
+
+export type ListArmorsResponse = ERResponse & {
+  data: ListArmors;
+};
+
+export type GetArmorByIdResponse = ERResponse & {
+  data: Armor;
+};

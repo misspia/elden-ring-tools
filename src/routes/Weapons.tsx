@@ -4,6 +4,7 @@ import { Loading } from "@/components/Loading";
 import { Page } from "@/components/Page";
 import { useListWeapons } from "@/hooks/data";
 import { Link } from "@tanstack/react-router";
+import { PageTitle } from "@/components/PageTitle";
 
 export const WeaponsErrorPage: React.FC = () => {
   return <Page>Weapons unavailable</Page>;
@@ -22,7 +23,7 @@ export const WeaponsPage: React.FC = () => {
 
   return (
     <Page>
-      <h1>Weapons</h1>
+      <PageTitle title="Weapons" />
       <div className="flex flex-wrap gap-2">
         {data.map((weapon) => (
           <Link

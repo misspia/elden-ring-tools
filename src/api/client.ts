@@ -1,6 +1,8 @@
 import {
+  GetArmorByIdResponse,
   GetAshByIdResponse,
   GetWeaponByIdResponse,
+  ListArmorsResponse,
   ListAshesResponse,
   ListWeaponsResponse,
 } from "@/types/api";
@@ -36,5 +38,14 @@ export class EldenRingClient {
 
   public getWeaponById({ weaponId }: { weaponId: string }) {
     return this.fetch<GetWeaponByIdResponse>(`weapons/${weaponId}`);
+  }
+
+  public listArmors() {
+    const params = "?limit=568"; // total num armors
+    return this.fetch<ListArmorsResponse>(`armors${params}`);
+  }
+
+  public getArmorById({ armorId }: { armorId: string }) {
+    return this.fetch<GetArmorByIdResponse>(`armors/${armorId}`);
   }
 }

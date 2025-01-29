@@ -1,9 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { EldenRingClient } from "@/api/client";
-import { Ash, ERError, ListAshes, ListWeapons, Weapon } from "@/types/api";
 import {
+  Armor,
+  Ash,
+  ERError,
+  ListArmors,
+  ListAshes,
+  ListWeapons,
+  Weapon,
+} from "@/types/api";
+import {
+  GET_ARMOR_BY_ID,
   GET_ASH_BY_ID_QUERY,
   GET_WEAPON_BY_ID,
+  LIST_ARMORS_QUERY,
   LIST_ASHES_QUERY,
   LIST_WEAPONS_QUERY,
 } from "@/api/constants/queries";
@@ -65,6 +75,39 @@ export const useWeapon = ({ weaponId }: { weaponId: string }) => {
     queryFn: async () => {
       try {
         const response = await erClient.getWeaponById({ weaponId });
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useListArmors = () => {
+  const erClient = new EldenRingClient();
+  return useQuery<ListArmors, ERError>({
+    queryKey: [LIST_ARMORS_QUERY],
+    queryFn: async () => {
+      try {
+        const response = await erClient.listArmors();
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useArmor = ({ armorId }: { armorId: string }) => {
+  const erClient = new EldenRingClient();
+  return useQuery<Armor, ERError>({
+    queryKey: [GET_ARMOR_BY_ID, armorId],
+    enabled: !!armorId,
+    queryFn: async () => {
+      try {
+        const response = await erClient.getArmorById({ armorId });
         return response.data;
       } catch (e) {
         console.error(e);

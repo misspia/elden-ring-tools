@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import c from "classnames";
 import { RouterPath } from "@/types/routes";
 import { Menu, MenuItem } from "@/routes/Root/Menu";
@@ -70,7 +70,7 @@ export const NavigationBar: React.FC = () => {
         "bg-er-green-900 shadow-navbar z-navbar",
         {
           "transition duration-0 delay-200 rounded-t-xl": !isNavBarActive,
-        },
+        }
       )}
     >
       {navGroups.map((group, index) => (
@@ -136,7 +136,7 @@ const NavItem: React.FC<NavItemProps> = ({
           "transition duration-100 ease-in-out",
           {
             "bg-er-green-800": isMenuActive,
-          },
+          }
         )}
       >
         <Text className="font-bold text-er-gold-500">{label}</Text>
