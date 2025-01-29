@@ -106,7 +106,7 @@ const enemiesIndexRoute = createRoute({
 });
 
 const enemeyRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => enemiesRoute,
   path: "$enemyId",
   component: EnemyPage,
   errorComponent: EnemyErrorPage,

@@ -143,3 +143,22 @@ export type ListArmorsResponse = ERResponse & {
 export type GetArmorByIdResponse = ERResponse & {
   data: Armor;
 };
+
+export type Creature = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  location: string;
+  drops: string;
+};
+
+export type ListCreatures = Creature[];
+
+export type ListCreaturesResponse = ERResponse & {
+  data: ListCreatures;
+};
+
+export type GetCreatureByIdResponse = ERResponse & {
+  data: Creature;
+};

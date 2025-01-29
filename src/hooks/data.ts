@@ -3,18 +3,22 @@ import { EldenRingClient } from "@/api/client";
 import {
   Armor,
   Ash,
+  Creature,
   ERError,
   ListArmors,
   ListAshes,
+  ListCreatures,
   ListWeapons,
   Weapon,
 } from "@/types/api";
 import {
   GET_ARMOR_BY_ID,
   GET_ASH_BY_ID_QUERY,
+  GET_CREATURE_BY_ID,
   GET_WEAPON_BY_ID,
   LIST_ARMORS_QUERY,
   LIST_ASHES_QUERY,
+  LIST_CREATURES_QUERY,
   LIST_WEAPONS_QUERY,
 } from "@/api/constants/queries";
 
@@ -108,6 +112,39 @@ export const useArmor = ({ armorId }: { armorId: string }) => {
     queryFn: async () => {
       try {
         const response = await erClient.getArmorById({ armorId });
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useListCreatures = () => {
+  const erClient = new EldenRingClient();
+  return useQuery<ListCreatures, ERError>({
+    queryKey: [LIST_CREATURES_QUERY],
+    queryFn: async () => {
+      try {
+        const response = await erClient.listCreatures();
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useCreature = ({ creatureId }: { creatureId: string }) => {
+  const erClient = new EldenRingClient();
+  return useQuery<Creature, ERError>({
+    queryKey: [GET_CREATURE_BY_ID, creatureId],
+    enabled: !!creatureId,
+    queryFn: async () => {
+      try {
+        const response = await erClient.getCreatureById({ creatureId });
         return response.data;
       } catch (e) {
         console.error(e);
