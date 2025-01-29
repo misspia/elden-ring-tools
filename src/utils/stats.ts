@@ -1,5 +1,11 @@
 import { MAX_CRITICAL_VALUE, MAX_STAT_VALUE } from "@/api/constants/game";
-import { AttackStatName, DefenceStatName, StatName } from "@/types/api";
+import {
+  AttackStatName,
+  DamageNegationStatName,
+  DefenceStatName,
+  ResistanceStatName,
+  StatName,
+} from "@/types/api";
 
 const statNameMap: Record<StatName, string> = {
   Phy: "Physical",
@@ -26,3 +32,29 @@ export const getDefenceStatDisplayName = (defenceStatName: DefenceStatName) =>
 
 export const getMaxStatValue = (statName: AttackStatName | DefenceStatName) =>
   statName === "Crit" ? MAX_CRITICAL_VALUE : MAX_STAT_VALUE;
+
+const damageNegationStatNameMap: Record<DamageNegationStatName, string> = {
+  Phy: "Physical",
+  Strike: "Strike",
+  Slash: "Slash",
+  Pierce: "Pierce",
+  Magic: "Magic",
+  Fire: "Fire",
+  Ligt: "Lightning",
+  Holy: "Holy",
+};
+
+export const getDamageNegationDisplayName = (
+  damageNegationName: DamageNegationStatName,
+) => damageNegationStatNameMap[damageNegationName];
+
+const resistanceStatNameMap: Record<ResistanceStatName, string> = {
+  Immunity: "Immunity",
+  Robustness: "Robustness",
+  Focus: "Focus",
+  Vitality: "Vitality",
+  Poise: "Poise",
+};
+export const getResistanceDisplayName = (
+  resistanceStatName: ResistanceStatName,
+) => resistanceStatNameMap[resistanceStatName];
