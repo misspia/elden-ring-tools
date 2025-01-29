@@ -1,11 +1,12 @@
 import React from "react";
 import c from "classnames";
+import { Text } from "./Text";
 
 type Theme = "gold" | "green";
 type Size = "sm" | "md" | "lg";
 
 type Props = {
-  src: string;
+  src?: string;
   size?: Size;
   /**
    * Color theme defaults to gold
@@ -27,6 +28,7 @@ export const ProfileImage: React.FC<Props> = ({
       className={c(
         "p-3 relative z-0",
         "w-full h-full",
+        "flex items-center justify-center",
         "border",
         {
           "border-er-green-500": theme === "green",
@@ -60,7 +62,13 @@ export const ProfileImage: React.FC<Props> = ({
           },
         )}
       />
-      <img src={src} alt={alt} className="w-full h-auto" />
+      {src ? (
+        <img src={src} alt={alt} className="w-full h-auto" />
+      ) : (
+        <Text as="span" className="text-er-gold-300">
+          Image Unavailable
+        </Text>
+      )}
     </div>
   );
 };

@@ -3,6 +3,9 @@ import { useMatch } from "@tanstack/react-router";
 import { useAsh } from "@/hooks/data";
 import { Loading } from "@/components/Loading";
 import { Page } from "@/components/Page";
+import { ProfileTitle } from "@/components/ProfileTitle";
+import { ProfileImage } from "@/components/ProfileImage";
+import { Text } from "@/components/Text";
 
 export const AshOfWarErrorPage: React.FC = () => {
   return <Page>ashes of war not available</Page>;
@@ -20,9 +23,17 @@ export const AshOfWarPage: React.FC = () => {
   }
 
   return (
-    <Page className="flex">
-      <h1>{data.name}</h1>
-      <div>id: {match.params.ashId}</div>
+    <Page className="flex flex-col items-center justify-center gap-10">
+      <ProfileTitle
+        title={data.name}
+        subtitle={`Skill: ${data.skill}`}
+        theme="gold"
+      />
+      <ProfileImage src={data.image} alt={`Image of ${data.name}`} />
+      {data.affinity}
+      <Text className="text-center w-full md:w-96 text-er-gold-500">
+        {data.description}
+      </Text>
     </Page>
   );
 };

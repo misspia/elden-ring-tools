@@ -1,5 +1,6 @@
 import React from "react";
 import c from "classnames";
+import { Text } from "@/components/Text";
 
 type Props = {
   label: string;
@@ -34,9 +35,9 @@ export const ItemPreview: React.FC<Props> = ({
       {src ? (
         <img src={src} alt={label} className="w-full h-auto" />
       ) : (
-        <div className="text-center">
+        <div className="text-center text-er-gold-500">
           <div className="bold">{formattedLabel}</div>
-          <div className="text-xs">(Image Unavailable)</div>
+          <Text as="span">(Image Unavailable)</Text>
         </div>
       )}
     </div>
