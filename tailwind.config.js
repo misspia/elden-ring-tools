@@ -16,13 +16,15 @@ export default {
         "navbar-height": "4rem", // padding to offset navbar height
       },
       zIndex: {
-        navbar: 90,
-        "navbar-menu-overlay": 100,
+        "navbar-dropdown": 90,
+        navbar: 100,
       },
       boxShadow: {
         // navbar: "0px -2px 20px -2px rgba(197, 135, 54, 0.5)",
         navbar: "0px 5px 20px -2px rgb(19, 53, 52, 0.5)",
-        "navbar-menu": "0px -5px 20px -2px rgb(19, 53, 52, 0.5)",
+        "navbar-menu": "0px -5px 20px -2px rgba(19, 53, 52, 0.5)",
+        "profile-image-frame":
+          "inset 0 0 19px 1px rgba(236, 184, 106, 0.7), 0 0 19px 1px rgba(236, 184, 106, 0.7)",
       },
       colors: {
         /** https://colorswall.com/palette/327666 */

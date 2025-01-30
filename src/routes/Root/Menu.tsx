@@ -40,6 +40,7 @@ export const Menu: React.FC<MenuProps> = ({ items, onClose, show }) => {
           "flex w-full p-2",
           "absolute top-[100%] left-0",
           "bg-er-green-900",
+          "z-navbar-dropdown",
         )}
       >
         <div className="w-full grow flex flex-col gap-4 items-center justify-center">

@@ -150,7 +150,7 @@ export type Creature = {
   image: string;
   description: string;
   location: string;
-  drops: string;
+  drops: string[];
 };
 
 export type ListCreatures = Creature[];

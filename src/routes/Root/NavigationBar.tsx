@@ -78,7 +78,7 @@ export const NavigationBar: React.FC = () => {
   return (
     <div
       className={c(
-        "sticky top-0",
+        "sticky top-0 z-navbar",
         " w-full flex items-center justify-center",
         "gap-x-3",
         "transition duration-300 ease-in-out",

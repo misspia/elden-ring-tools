@@ -33,7 +33,7 @@ export const ItemPreview: React.FC<Props> = ({
       )}
     >
       {src ? (
-        <img src={src} alt={label} className="w-full h-auto" />
+        <img src={src} alt={label} className="w-full h-full object-cover" />
       ) : (
         <div className="text-center text-er-gold-500">
           <div className="bold">{formattedLabel}</div>

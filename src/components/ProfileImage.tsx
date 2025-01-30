@@ -1,6 +1,6 @@
 import React from "react";
 import c from "classnames";
-import { Text } from "./Text";
+import { Text } from "@/components/Text";
 
 type Theme = "gold" | "green";
 type Size = "sm" | "md" | "lg";
@@ -62,12 +62,25 @@ export const ProfileImage: React.FC<Props> = ({
           },
         )}
       />
-      {src ? (
-        <img src={src} alt={alt} className="w-full h-auto" />
-      ) : (
+      {!src ? (
         <Text as="span" className="text-er-gold-300">
           Image Unavailable
         </Text>
+      ) : (
+        <div
+          className={c(
+            "relative border border-er-gold-500/60",
+            "w-[90%] h-[90%] rounded-full overflow-hidden",
+            "flex justify-center items-center",
+            "shadow-profile-image-frame",
+          )}
+        >
+          <img
+            src={src}
+            alt={alt}
+            className={c("z-[-1] object-cover w-full h-full")}
+          />
+        </div>
       )}
     </div>
   );

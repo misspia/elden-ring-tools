@@ -145,7 +145,10 @@ export const useCreature = ({ creatureId }: { creatureId: string }) => {
     queryFn: async () => {
       try {
         const response = await erClient.getCreatureById({ creatureId });
-        return response.data;
+        return {
+          ...response.data,
+          drops: response.data.drops.filter((drop) => drop !== ""),
+        };
       } catch (e) {
         console.error(e);
         throw e;
