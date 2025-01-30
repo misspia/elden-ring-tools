@@ -28,18 +28,18 @@ export const Menu: React.FC<MenuProps> = ({ items, onClose, show }) => {
   return (
     <Transition
       show={show}
-      enter="transition duration-300 ease-in-out"
-      enterFrom="translate-y-[calc(100% + 100px)] opacity-100"
-      enterTo="translate-y-0 opacity-100"
-      leave="transition duration-200 ease-in-out"
-      leaveFrom=" opacity-100"
-      leaveTo="opacity-0"
+      enter="transition duration-300 ease-in-out h-0"
+      enterFrom="h-0"
+      enterTo="h-fit"
+      leave="transition duration-200 ease-in-out h-0"
+      leaveFrom="h-0"
+      leaveTo="h-fit"
     >
       <div
         className={c(
-          "absolute bottom-[100%] left-0 w-full",
-          "rounded-t-xl shadow-navbar-menu",
-          "flex flex-col items-center gap-10 p-6 bg-er-green-900",
+          "flex w-full p-2",
+          "absolute top-[100%] left-0",
+          "bg-er-green-900",
         )}
       >
         <div className="w-full grow flex flex-col gap-4 items-center justify-center">

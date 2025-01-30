@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import c from "classnames";
 import { RouterPath } from "@/types/routes";
@@ -6,7 +6,7 @@ import { Menu, MenuItem } from "@/routes/Root/Menu";
 import { Text } from "@/components/Text";
 
 type NavGroup = {
-  label: string;
+  label: React.ReactNode;
   items?: MenuItem[];
   to?: RouterPath;
 };
@@ -60,16 +60,32 @@ const navGroups: NavGroup[] = [
 
 export const NavigationBar: React.FC = () => {
   const [isNavBarActive, setIsNavBarActive] = useState(false);
+  const [isScrollAtTop, setIsScrollAtTop] = useState(true);
+
+  useEffect(() => {
+    const setScrollState: EventListener = () => {
+      setIsScrollAtTop(window.scrollY === 0);
+    };
+
+    if (!window) return;
+    window.addEventListener("scroll", setScrollState);
+
+    return () => {
+      window.removeEventListener("scroll", setScrollState);
+    };
+  }, [window]);
 
   return (
     <div
       className={c(
-        "fixed bottom-2 left-[50%] -translate-x-[50%] h-navbar",
-        "rounded-b-xl",
-        "flex justify-center items-center",
-        "bg-er-green-900 shadow-navbar z-navbar",
+        "sticky top-0",
+        " w-full flex items-center justify-center",
+        "gap-x-3",
+        "transition duration-300 ease-in-out",
         {
-          "transition duration-0 delay-200 rounded-t-xl": !isNavBarActive,
+          "bg-er-green-900/80": !isScrollAtTop && !isNavBarActive,
+          "bg-er-green-900": isNavBarActive,
+          "bg-transparent": isScrollAtTop && !isNavBarActive,
         },
       )}
     >
@@ -101,7 +117,6 @@ const NavItem: React.FC<NavItemProps> = ({
   const navigate = useNavigate();
 
   const onActivateMenu = () => {
-    if (!items || (items && items.length === 0)) return;
     onActivateNavBar();
     setIsMenuActive(true);
   };
@@ -119,28 +134,29 @@ const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <div
-      className="flex flex-col justify-center h-full px-6 py-2 cursor-pointer"
+      className="flex flex-col justify-center p-1 cursor-pointer"
       onMouseEnter={onActivateMenu}
       onMouseLeave={onDeactivateMenu}
       onClick={onNavigateTo}
     >
-      <Menu
-        show={isMenuActive}
-        items={items ?? []}
-        onClose={onDeactivateMenu}
-      />
       <div
         className={c(
-          "flex items-center justify-center px-4",
-          "h-full w-full rounded-xl ",
+          "flex items-center justify-center p-2",
           "transition duration-100 ease-in-out",
           {
             "bg-er-green-800": isMenuActive,
           },
         )}
       >
-        <Text className="font-bold text-er-gold-500">{label}</Text>
+        <Text className="font-bold text-er-gold-500 tracking-widest">
+          {label}
+        </Text>
       </div>
+      <Menu
+        show={isMenuActive && !!items?.length}
+        items={items ?? []}
+        onClose={onDeactivateMenu}
+      />
     </div>
   );
 };

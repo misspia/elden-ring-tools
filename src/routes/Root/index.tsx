@@ -4,10 +4,10 @@ import { NavigationBar } from "@/routes/Root/NavigationBar";
 
 export const Root: React.FC = () => {
   return (
-    <div className="flex flex-start h-full w-full pb-navbar-height">
+    <div className="flex flex-start flex-col h-full w-full">
+      <NavigationBar />
       <ScrollRestoration />
       <Outlet />
-      <NavigationBar />
     </div>
   );
 };

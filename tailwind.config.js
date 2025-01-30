@@ -52,7 +52,7 @@ export default {
         "er-green-900": "#081D1C",
         "er-green-950": "#378661",
 
-        "er-black": "#252531",
+        "er-black": "#242424",
       },
     },
   },
