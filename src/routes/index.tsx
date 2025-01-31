@@ -26,6 +26,8 @@ import { BossesErrorPage, BossesPage } from "@/routes/Bosses";
 import { BossErrorPage, BossPage } from "@/routes/Boss";
 import { NPCsErrorPage, NPCsPage } from "@/routes/NPCs";
 import { NPCErrorPage, NPCPage } from "@/routes/NPC";
+import { ShieldsErrorPage, ShieldsPage } from "@/routes/Shields";
+import { ShieldErrorPage, ShieldPage } from "@/routes/Shield";
 
 /**
  * Routes
@@ -95,6 +97,25 @@ const weaponRoute = createRoute({
   path: "$weaponId",
   component: WeaponPage,
   errorComponent: WeaponErrorPage,
+});
+
+const shieldsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "shields",
+});
+
+const shieldsIndexRoute = createRoute({
+  getParentRoute: () => shieldsRoute,
+  path: "/",
+  component: ShieldsPage,
+  errorComponent: ShieldsErrorPage,
+});
+
+const shieldRoute = createRoute({
+  getParentRoute: () => shieldsRoute,
+  path: "$shieldId",
+  component: ShieldPage,
+  errorComponent: ShieldErrorPage,
 });
 
 const enemiesRoute = createRoute({
@@ -172,6 +193,7 @@ const routeTree = rootRoute.addChildren([
   ashesOfWarRoute.addChildren([ashesOfWarIndexRoute, ashOfWarRoute]),
   armorsRoute.addChildren([armorsIndexRoute, armorRoute]),
   weaponsRoute.addChildren([weaponsIndexRoute, weaponRoute]),
+  shieldsRoute.addChildren([shieldsIndexRoute, shieldRoute]),
   enemiesRoute.addChildren([enemiesIndexRoute, enemeyRoute]),
   bossesRoute.addChildren([bossesIndexRoute, bossRoute]),
   NPCsRoute.addChildren([NPCsIndexRoute, NPCRoute]),

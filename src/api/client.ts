@@ -4,14 +4,18 @@ import {
   GetBossByIdResponse,
   GetCreatureByIdResponse,
   GetNPCByIdResponse,
+  GetShieldByIdResponse,
   GetWeaponByIdResponse,
   ListArmorsResponse,
   ListAshesResponse,
   ListBossesResponse,
   ListCreaturesResponse,
   ListNPCsResponse,
+  ListShieldsResponse,
   ListWeaponsResponse,
 } from "@/types/api";
+
+const DEFAULT_LIMIT_PARAM = "?limit=500";
 
 export class EldenRingClient {
   private readonly hostname: string;
@@ -38,17 +42,23 @@ export class EldenRingClient {
   }
 
   public listWeapons() {
-    const params = "?limit=307"; // total num weapons
-    return this.fetch<ListWeaponsResponse>(`weapons${params}`);
+    return this.fetch<ListWeaponsResponse>(`weapons${DEFAULT_LIMIT_PARAM}`);
   }
 
   public getWeaponById({ weaponId }: { weaponId: string }) {
     return this.fetch<GetWeaponByIdResponse>(`weapons/${weaponId}`);
   }
 
+  public listShields() {
+    return this.fetch<ListShieldsResponse>(`shields${DEFAULT_LIMIT_PARAM}`);
+  }
+
+  public getShieldById({ shieldId }: { shieldId: string }) {
+    return this.fetch<GetShieldByIdResponse>(`shields/${shieldId}`);
+  }
+
   public listArmors() {
-    const params = "?limit=568"; // total num armors
-    return this.fetch<ListArmorsResponse>(`armors${params}`);
+    return this.fetch<ListArmorsResponse>(`armors${DEFAULT_LIMIT_PARAM}`);
   }
 
   public getArmorById({ armorId }: { armorId: string }) {
@@ -56,8 +66,7 @@ export class EldenRingClient {
   }
 
   public listCreatures() {
-    const params = "?limit=115"; // total num creatures
-    return this.fetch<ListCreaturesResponse>(`creatures${params}`);
+    return this.fetch<ListCreaturesResponse>(`creatures${DEFAULT_LIMIT_PARAM}`);
   }
 
   public getCreatureById({ creatureId }: { creatureId: string }) {
@@ -65,8 +74,7 @@ export class EldenRingClient {
   }
 
   public listBosses() {
-    const params = "?limit=106"; // total num bosses
-    return this.fetch<ListBossesResponse>(`bosses${params}`);
+    return this.fetch<ListBossesResponse>(`bosses${DEFAULT_LIMIT_PARAM}`);
   }
 
   public getBossById({ bossId }: { bossId: string }) {
@@ -74,8 +82,7 @@ export class EldenRingClient {
   }
 
   public listNPCs() {
-    const params = "?limit=55"; // total num bosses
-    return this.fetch<ListNPCsResponse>(`npcs${params}`);
+    return this.fetch<ListNPCsResponse>(`npcs${DEFAULT_LIMIT_PARAM}`);
   }
 
   public getNPCById({ npcId }: { npcId: string }) {

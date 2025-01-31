@@ -11,8 +11,10 @@ import {
   ListBosses,
   ListCreatures,
   ListNPCs,
+  ListShields,
   ListWeapons,
   NPC,
+  Shield,
   Weapon,
 } from "@/types/api";
 import {
@@ -21,12 +23,14 @@ import {
   GET_BOSS_BY_ID,
   GET_CREATURE_BY_ID,
   GET_NPC_BY_ID,
+  GET_SHIELD_BY_ID,
   GET_WEAPON_BY_ID,
   LIST_ARMORS_QUERY,
   LIST_ASHES_QUERY,
   LIST_BOSSES_QUERY,
   LIST_CREATURES_QUERY,
   LIST_NPCS_QUERY,
+  LIST_SHIELDS_QUERY,
   LIST_WEAPONS_QUERY,
 } from "@/api/constants/queries";
 
@@ -87,6 +91,39 @@ export const useWeapon = ({ weaponId }: { weaponId: string }) => {
     queryFn: async () => {
       try {
         const response = await erClient.getWeaponById({ weaponId });
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useListShields = () => {
+  const erClient = new EldenRingClient();
+  return useQuery<ListShields, ERError>({
+    queryKey: [LIST_SHIELDS_QUERY],
+    queryFn: async () => {
+      try {
+        const response = await erClient.listShields();
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useShield = ({ shieldId }: { shieldId: string }) => {
+  const erClient = new EldenRingClient();
+  return useQuery<Shield, ERError>({
+    queryKey: [GET_SHIELD_BY_ID, shieldId],
+    enabled: !!shieldId,
+    queryFn: async () => {
+      try {
+        const response = await erClient.getShieldById({ shieldId });
         return response.data;
       } catch (e) {
         console.error(e);

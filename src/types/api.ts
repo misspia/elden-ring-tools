@@ -96,6 +96,29 @@ export type GetWeaponByIdResponse = ERResponse & {
   data: Weapon;
 };
 
+export type Shield = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  category: string;
+  weight: number;
+  attack: AttackStat[];
+  defence: DefenceStat[];
+  requiredAttributes: Attribute[];
+  scalesWith: ScaleStat[];
+};
+
+export type ListShields = Shield[];
+
+export type ListShieldsResponse = ERResponse & {
+  data: ListShields;
+};
+
+export type GetShieldByIdResponse = ERResponse & {
+  data: Shield;
+};
+
 export type DamageNegationStatName =
   | "Phy"
   | "Strike"

@@ -31,6 +31,11 @@ const navGroups: NavGroup[] = [
         to: "/weapons",
       },
       {
+        key: "Shields",
+        label: "Shields",
+        to: "/shields",
+      },
+      {
         key: "Enemies",
         label: "Enemies",
         to: "/enemies",
