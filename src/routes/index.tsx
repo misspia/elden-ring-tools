@@ -22,6 +22,8 @@ import { EnemiesErrorPage, EnemiesPage } from "@/routes/Enemies";
 import { EnemyErrorPage, EnemyPage } from "@/routes/Enemy";
 import { CalculatorPage } from "@/routes/Calculator";
 import { BuildPage, BuildErrorPage } from "@/routes/Build";
+import { BossesErrorPage, BossesPage } from "./Bosses";
+import { BossErrorPage, BossPage } from "./Boss";
 
 /**
  * Routes
@@ -112,6 +114,25 @@ const enemeyRoute = createRoute({
   errorComponent: EnemyErrorPage,
 });
 
+const bossesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "bosses",
+});
+
+const bossesIndexRoute = createRoute({
+  getParentRoute: () => bossesRoute,
+  path: "/",
+  component: BossesPage,
+  errorComponent: BossesErrorPage,
+});
+
+const bossRoute = createRoute({
+  getParentRoute: () => bossesRoute,
+  path: "$bossId",
+  component: BossPage,
+  errorComponent: BossErrorPage,
+});
+
 const calculatorRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "calculator",
@@ -131,6 +152,7 @@ const routeTree = rootRoute.addChildren([
   armorsRoute.addChildren([armorsIndexRoute, armorRoute]),
   weaponsRoute.addChildren([weaponsIndexRoute, weaponRoute]),
   enemiesRoute.addChildren([enemiesIndexRoute, enemeyRoute]),
+  bossesRoute.addChildren([bossesIndexRoute, bossRoute]),
   calculatorRoute,
   builderRoute,
 ]);

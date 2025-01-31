@@ -162,3 +162,23 @@ export type ListCreaturesResponse = ERResponse & {
 export type GetCreatureByIdResponse = ERResponse & {
   data: Creature;
 };
+
+export type Boss = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  location: string;
+  drops: string[];
+  healthPoints: string;
+};
+
+export type ListBosses = Boss[];
+
+export type ListBossesResponse = ERResponse & {
+  data: ListBosses;
+};
+
+export type GetBossByIdResponse = ERResponse & {
+  data: Boss;
+};

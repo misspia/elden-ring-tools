@@ -3,10 +3,12 @@ import { EldenRingClient } from "@/api/client";
 import {
   Armor,
   Ash,
+  Boss,
   Creature,
   ERError,
   ListArmors,
   ListAshes,
+  ListBosses,
   ListCreatures,
   ListWeapons,
   Weapon,
@@ -14,10 +16,12 @@ import {
 import {
   GET_ARMOR_BY_ID,
   GET_ASH_BY_ID_QUERY,
+  GET_BOSS_BY_ID,
   GET_CREATURE_BY_ID,
   GET_WEAPON_BY_ID,
   LIST_ARMORS_QUERY,
   LIST_ASHES_QUERY,
+  LIST_BOSSES_QUERY,
   LIST_CREATURES_QUERY,
   LIST_WEAPONS_QUERY,
 } from "@/api/constants/queries";
@@ -145,6 +149,42 @@ export const useCreature = ({ creatureId }: { creatureId: string }) => {
     queryFn: async () => {
       try {
         const response = await erClient.getCreatureById({ creatureId });
+        return {
+          ...response.data,
+          drops: response.data.drops.filter((drop) => drop !== ""),
+        };
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useListBosses = () => {
+  const erClient = new EldenRingClient();
+  return useQuery<ListBosses, ERError>({
+    queryKey: [LIST_BOSSES_QUERY],
+    queryFn: async () => {
+      try {
+        const response = await erClient.listBosses();
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useBoss = ({ bossId }: { bossId: string }) => {
+  const erClient = new EldenRingClient();
+  return useQuery<Boss, ERError>({
+    queryKey: [GET_BOSS_BY_ID, bossId],
+    enabled: !!bossId,
+    queryFn: async () => {
+      try {
+        const response = await erClient.getBossById({ bossId });
         return {
           ...response.data,
           drops: response.data.drops.filter((drop) => drop !== ""),

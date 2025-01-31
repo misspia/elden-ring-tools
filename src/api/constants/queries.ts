@@ -6,3 +6,5 @@ export const LIST_ARMORS_QUERY = "listArmors";
 export const GET_ARMOR_BY_ID = "getArmorById";
 export const LIST_CREATURES_QUERY = "listCreatures";
 export const GET_CREATURE_BY_ID = "getCreatureById";
+export const LIST_BOSSES_QUERY = "listBOsses";
+export const GET_BOSS_BY_ID = "getBossById";
