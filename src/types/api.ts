@@ -119,6 +119,41 @@ export type GetShieldByIdResponse = ERResponse & {
   data: Shield;
 };
 
+export type AmmoStatName =
+  | "physical"
+  | "magic"
+  | "fire"
+  | "lightning"
+  | "holy"
+  | "critical";
+
+export type AmmoType = "Pierce" | null;
+
+export type AmmoStat = {
+  name: AmmoStatName;
+  amount: number;
+};
+
+export type Ammo = {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  type: string;
+  passive: string;
+  attackPower: AmmoStat[];
+};
+
+export type ListAmmos = Shield[];
+
+export type ListAmmosResponse = ERResponse & {
+  data: ListAmmos;
+};
+
+export type GetAmmoByIdResponse = ERResponse & {
+  data: Ammo;
+};
+
 export type DamageNegationStatName =
   | "Phy"
   | "Strike"

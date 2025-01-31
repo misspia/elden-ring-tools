@@ -28,6 +28,8 @@ import { NPCsErrorPage, NPCsPage } from "@/routes/NPCs";
 import { NPCErrorPage, NPCPage } from "@/routes/NPC";
 import { ShieldsErrorPage, ShieldsPage } from "@/routes/Shields";
 import { ShieldErrorPage, ShieldPage } from "@/routes/Shield";
+import { AmmosErrorPage, AmmosPage } from "@/routes/Ammos";
+import { AmmoErrorPage, AmmoPage } from "@/routes/Ammo";
 
 /**
  * Routes
@@ -118,6 +120,25 @@ const shieldRoute = createRoute({
   errorComponent: ShieldErrorPage,
 });
 
+const ammosRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "ammos",
+});
+
+const ammosIndexRoute = createRoute({
+  getParentRoute: () => ammosRoute,
+  path: "/",
+  component: AmmosPage,
+  errorComponent: AmmosErrorPage,
+});
+
+const ammoRoute = createRoute({
+  getParentRoute: () => ammosRoute,
+  path: "$ammoId",
+  component: AmmoPage,
+  errorComponent: AmmoErrorPage,
+});
+
 const enemiesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "enemies",
@@ -194,6 +215,7 @@ const routeTree = rootRoute.addChildren([
   armorsRoute.addChildren([armorsIndexRoute, armorRoute]),
   weaponsRoute.addChildren([weaponsIndexRoute, weaponRoute]),
   shieldsRoute.addChildren([shieldsIndexRoute, shieldRoute]),
+  ammosRoute.addChildren([ammosIndexRoute, ammoRoute]),
   enemiesRoute.addChildren([enemiesIndexRoute, enemeyRoute]),
   bossesRoute.addChildren([bossesIndexRoute, bossRoute]),
   NPCsRoute.addChildren([NPCsIndexRoute, NPCRoute]),

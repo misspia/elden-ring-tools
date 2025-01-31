@@ -23,7 +23,7 @@ export const ShieldsPage: React.FC = () => {
 
   return (
     <Page>
-      <PageTitle title="Shield" />
+      <PageTitle title="Shields" />
       <div className="flex flex-wrap gap-2">
         {data.map((shield) => (
           <Link

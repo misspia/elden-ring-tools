@@ -1,4 +1,5 @@
 import {
+  GetAmmoByIdResponse,
   GetArmorByIdResponse,
   GetAshByIdResponse,
   GetBossByIdResponse,
@@ -6,6 +7,7 @@ import {
   GetNPCByIdResponse,
   GetShieldByIdResponse,
   GetWeaponByIdResponse,
+  ListAmmosResponse,
   ListArmorsResponse,
   ListAshesResponse,
   ListBossesResponse,
@@ -55,6 +57,14 @@ export class EldenRingClient {
 
   public getShieldById({ shieldId }: { shieldId: string }) {
     return this.fetch<GetShieldByIdResponse>(`shields/${shieldId}`);
+  }
+
+  public listAmmos() {
+    return this.fetch<ListAmmosResponse>(`ammos${DEFAULT_LIMIT_PARAM}`);
+  }
+
+  public getAmmoById({ ammoId }: { ammoId: string }) {
+    return this.fetch<GetAmmoByIdResponse>(`ammos/${ammoId}`);
   }
 
   public listArmors() {

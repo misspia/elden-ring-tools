@@ -1,5 +1,6 @@
 import { MAX_CRITICAL_VALUE, MAX_STAT_VALUE } from "@/api/constants/game";
 import {
+  AmmoStatName,
   AttackStatName,
   DamageNegationStatName,
   DefenceStatName,
@@ -30,8 +31,15 @@ export const getAttackStatDisplayName = (attackStatName: AttackStatName) =>
 export const getDefenceStatDisplayName = (defenceStatName: DefenceStatName) =>
   defenceStatNameMap[defenceStatName];
 
-export const getMaxStatValue = (statName: AttackStatName | DefenceStatName) =>
-  statName === "Crit" ? MAX_CRITICAL_VALUE : MAX_STAT_VALUE;
+export const getAmmoStatDisplayName = (ammoStatName: AmmoStatName) =>
+  String(ammoStatName).charAt(0).toUpperCase() + String(ammoStatName).slice(1);
+
+export const getMaxStatValue = (
+  statName: AttackStatName | DefenceStatName | AmmoStatName,
+) =>
+  statName === "Crit" || statName === "critical"
+    ? MAX_CRITICAL_VALUE
+    : MAX_STAT_VALUE;
 
 const damageNegationStatNameMap: Record<DamageNegationStatName, string> = {
   Phy: "Physical",
