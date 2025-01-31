@@ -10,7 +10,9 @@ import {
   ListAshes,
   ListBosses,
   ListCreatures,
+  ListNPCs,
   ListWeapons,
+  NPC,
   Weapon,
 } from "@/types/api";
 import {
@@ -18,11 +20,13 @@ import {
   GET_ASH_BY_ID_QUERY,
   GET_BOSS_BY_ID,
   GET_CREATURE_BY_ID,
+  GET_NPC_BY_ID,
   GET_WEAPON_BY_ID,
   LIST_ARMORS_QUERY,
   LIST_ASHES_QUERY,
   LIST_BOSSES_QUERY,
   LIST_CREATURES_QUERY,
+  LIST_NPCS_QUERY,
   LIST_WEAPONS_QUERY,
 } from "@/api/constants/queries";
 
@@ -189,6 +193,39 @@ export const useBoss = ({ bossId }: { bossId: string }) => {
           ...response.data,
           drops: response.data.drops.filter((drop) => drop !== ""),
         };
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useListNPCs = () => {
+  const erClient = new EldenRingClient();
+  return useQuery<ListNPCs, ERError>({
+    queryKey: [LIST_NPCS_QUERY],
+    queryFn: async () => {
+      try {
+        const response = await erClient.listNPCs();
+        return response.data;
+      } catch (e) {
+        console.error(e);
+        throw e;
+      }
+    },
+  });
+};
+
+export const useNPC = ({ npcId }: { npcId: string }) => {
+  const erClient = new EldenRingClient();
+  return useQuery<NPC, ERError>({
+    queryKey: [GET_NPC_BY_ID, npcId],
+    enabled: !!npcId,
+    queryFn: async () => {
+      try {
+        const response = await erClient.getNPCById({ npcId });
+        return response.data;
       } catch (e) {
         console.error(e);
         throw e;

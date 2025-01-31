@@ -3,11 +3,13 @@ import {
   GetAshByIdResponse,
   GetBossByIdResponse,
   GetCreatureByIdResponse,
+  GetNPCByIdResponse,
   GetWeaponByIdResponse,
   ListArmorsResponse,
   ListAshesResponse,
   ListBossesResponse,
   ListCreaturesResponse,
+  ListNPCsResponse,
   ListWeaponsResponse,
 } from "@/types/api";
 
@@ -69,5 +71,14 @@ export class EldenRingClient {
 
   public getBossById({ bossId }: { bossId: string }) {
     return this.fetch<GetBossByIdResponse>(`bosses/${bossId}`);
+  }
+
+  public listNPCs() {
+    const params = "?limit=55"; // total num bosses
+    return this.fetch<ListNPCsResponse>(`npcs${params}`);
+  }
+
+  public getNPCById({ npcId }: { npcId: string }) {
+    return this.fetch<GetNPCByIdResponse>(`npcs/${npcId}`);
   }
 }

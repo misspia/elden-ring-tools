@@ -40,6 +40,11 @@ const navGroups: NavGroup[] = [
         label: "Bosses",
         to: "/bosses",
       },
+      {
+        key: "NPCs",
+        label: "NPCs",
+        to: "/npcs",
+      },
     ],
   },
   {

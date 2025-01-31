@@ -182,3 +182,22 @@ export type ListBossesResponse = ERResponse & {
 export type GetBossByIdResponse = ERResponse & {
   data: Boss;
 };
+
+export type NPC = {
+  id: string;
+  name: string;
+  image: string;
+  location: string;
+  quote: string | null;
+  role: string;
+};
+
+export type ListNPCs = NPC[];
+
+export type ListNPCsResponse = ERResponse & {
+  data: ListNPCs;
+};
+
+export type GetNPCByIdResponse = ERResponse & {
+  data: NPC;
+};
